@@ -3,7 +3,10 @@ import reactLogo from './assets/react.svg'
 import viteLogo from '/vite.svg'
 import './App.css'
 
-import SerieComponent from "./components/SerieComponent"
+import Cabecera from "./components/Cabecera";
+import Menu from "./components/Menu";
+import Footer from "./components/Footer";
+import SerieComponent from "./components/SerieComponent";
 
 function App() {
   const series = [
@@ -16,23 +19,31 @@ function App() {
   ];
 
   return (
-    <div className="container mt-3">
-      <h1 className="border-bottom pb-3 mb-3">Series</h1>
-      <div className="row">
-        {series.map((serie) => (
-          <div key={serie.cod} className="col-md-4 mb-3">
-            <SerieComponent
-              codigo={serie.cod}
-              nombre={serie.nom}
-              categoria={serie.cat}
-              imagen={serie.img}
-            />
-          </div>
-        ))}
+    <div>
+      <Cabecera />
+      <Menu />
+
+      <div className="container mt-4">
+        <h2 className="mb-3">Series</h2>
+        <div className="row">
+          {series.map((serie) => (
+            <div className="col-md-4" key={serie.cod}>
+              <SerieComponent
+                codigo={serie.cod}
+                nombre={serie.nom}
+                categoria={serie.cat}
+                imagen={serie.img}
+              />
+            </div>
+          ))}
+        </div>
       </div>
+
+      <Footer />
     </div>
   );
 }
 
 export default App;
+
 
